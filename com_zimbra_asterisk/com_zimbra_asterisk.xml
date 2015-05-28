@@ -1,0 +1,67 @@
+<!--
+ * ***** BEGIN LICENSE BLOCK *****
+ * Zimbra Collaboration Suite Zimlets
+ * Copyright (C) 2006, 2007, 2008, 2009, 2013, 2014 Zimbra, Inc.
+ * 
+ * The contents of this file are subject to the Common Public Attribution License Version 1.0 (the "License");
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at: http://www.zimbra.com/license
+ * The License is based on the Mozilla Public License Version 1.1 but Sections 14 and 15 
+ * have been added to cover use of software over a computer network and provide for limited attribution 
+ * for the Original Developer. In addition, Exhibit A has been modified to be consistent with Exhibit B. 
+ * 
+ * Software distributed under the License is distributed on an "AS IS" basis, 
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing rights and limitations under the License. 
+ * The Original Code is Zimbra Open Source Web Client. 
+ * The Initial Developer of the Original Code is Zimbra, Inc. 
+ * All portions of the code are Copyright (C) 2006, 2007, 2008, 2009, 2013, 2014 Zimbra, Inc. All Rights Reserved. 
+ * ***** END LICENSE BLOCK *****
+-->
+<zimlet name="com_zimbra_asterisk" version="1.0" description="Place a telephone call using Asterisk">
+    <summary>This zimlet provides an interface to an Asterisk PBX.</summary>
+    <include>asterisk.js</include>
+    <includeCSS>asterisk.css</includeCSS>
+    <resource>asterisk.gif</resource>
+    <handlerObject>Com_Zimbra_Asterisk</handlerObject>
+    <contentObject type="Asterisk">
+        <matchOn>
+            <regex attrs="ig">(^|\W)(?:(?:\(\d{3}\)[-_.\s]?|\d-?\d{3}[-_.\s]?))?\d{3}[-_.\s]\d{4}(\W|$)</regex>
+        </matchOn>
+        <toolTip>
+            &lt;html:span style="font: 120% Georgia;"&gt;Call &lt;b&gt;${src.objectContent}&lt;/b&gt; through Asterisk&lt;/html:span&gt;
+        </toolTip>
+        <contextMenu>
+            <menuItem label="Call" id="ICALL"/>
+        </contextMenu>
+    </contentObject>
+
+    <contextMenu>
+        <menuItem label="Call" id="CALL"/>
+    </contextMenu>
+
+    <zimletPanelItem label="Asterisk" icon="ASTK-panelIcon">
+        <toolTipText>Click to access the Asterisk phone server or drop a Contact or an Appointment to place a call.</toolTipText>
+        <dragSource type="ZmContact"/>
+        <dragSource type="ZmAppt"/>
+        <contextMenu>
+            <menuItem label="Preferences..." id="PREFERENCES"/>
+            <menuItem label="Phone Server" id="SERVERWEBPAGE" icon="ASTK-panelIcon">
+            </menuItem>
+        </contextMenu>
+    </zimletPanelItem>
+
+    <userProperties>
+        <property type="string" name="targetipaddress" label="Target IPAddress"/>
+        <property type="string" name="pbxUname" minLength="0" maxLength="32" label="PBX Username"/>
+        <property type="password" name="pbxPass" minLength="0" maxLength="32" label="PBX Password"/>
+        <property type="string" name="myConfBridge" minLength="0" maxLength="32" label="My Conference Bridge"/>
+        <property type="string" name="myMobileNum" minLength="0" maxLength="32" label="My Mobile Number"/>
+        <property type="string" name="myDeskNum" minLength="0" maxLength="32" label="My Desk Number"/>
+        <property type="enum" name="defaultNum" width="100" label="Default Number" value="myMobileNum">
+            <item label="Bridge" value="myConfBridge"/>
+            <item label="Mobile" value="myMobileNum"/>
+            <item label="Desk" value="myDeskNum"/>
+        </property>
+    </userProperties>
+</zimlet>

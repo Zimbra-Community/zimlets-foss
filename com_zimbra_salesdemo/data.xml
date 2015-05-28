@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * ***** BEGIN LICENSE BLOCK *****
+ * Zimbra Collaboration Suite Zimlets
+ * Copyright (C) 2011, 2013, 2014 Zimbra, Inc.
+ * 
+ * The contents of this file are subject to the Common Public Attribution License Version 1.0 (the "License");
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at: http://www.zimbra.com/license
+ * The License is based on the Mozilla Public License Version 1.1 but Sections 14 and 15 
+ * have been added to cover use of software over a computer network and provide for limited attribution 
+ * for the Original Developer. In addition, Exhibit A has been modified to be consistent with Exhibit B. 
+ * 
+ * Software distributed under the License is distributed on an "AS IS" basis, 
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing rights and limitations under the License. 
+ * The Original Code is Zimbra Open Source Web Client. 
+ * The Initial Developer of the Original Code is Zimbra, Inc. 
+ * All portions of the code are Copyright (C) 2011, 2013, 2014 Zimbra, Inc. All Rights Reserved. 
+ * ***** END LICENSE BLOCK *****
+-->
+<items>
+    <!-- Add an item (matches "SEM_12345_31122011") -->
+    <item>
+        <!-- [Required] Tooltip to be displayed-->
+        <tooltip>
+            <!-- [Required] match the below text in email body -->
+            <textToMatch>SEM_12345_31122011</textToMatch>
+            <!-- TemplateId(<zimletName>/templates/Sales.template) contains html to be displayed in tooltip -->
+            <tooltipTemplateId>TEMPLATE_FOR_SAP_SEM_ITEM_TOOLTIP</tooltipTemplateId>
+
+            <!-- When the user right-clicks.. show this context menu-->
+            <contextMenu>
+                <!--A single context menu item -->
+                <contextMenuItem>
+                    <!-- menu item name -->
+                    <name>Display Data</name>
+                    <!-- menu item's icon [this is the CSS name described in Sales.css] -->
+                    <icon>SAP_Icon</icon>
+                </contextMenuItem>
+                <!--A single context menu item -->
+                <contextMenuItem>
+                    <!-- menu item name -->
+                    <name>Change Threshold</name>
+                    <!-- menu item's icon [this is the CSS name described in Sales.css] -->
+                    <icon>SAP_Icon</icon>
+                </contextMenuItem>
+                <!--A single context menu item -->
+                <contextMenuItem>
+                    <!-- menu item name -->
+                    <name>Change date range</name>
+                    <!-- menu item's icon [this is the CSS name described in Sales.css] -->
+                    <icon>SAP_Icon</icon>
+                </contextMenuItem>
+                <!--A single context menu item -->
+                <contextMenuItem>
+                    <!-- menu item name -->
+                    <name>Drill down</name>
+                    <!-- menu item's icon [this is the CSS name described in Sales.css] -->
+                    <icon>SAP_Icon</icon>
+                </contextMenuItem>
+            </contextMenu>
+        </tooltip>
+
+
+        <!--[Optional] Show a dialog when the user clicks on the Zimlet's link -->
+        <popupDialog>
+            <!-- Template Id(<zimletName>/templates/Sales.template) contains html to be displayed in dialog -->
+            <dialogTemplateId>TEMPLATE_FOR_SAP_SEM_ITEM_DIALOG</dialogTemplateId>
+        </popupDialog>
+
+
+        <!--[Optional] add toolbar -->
+        <toolbar>
+            <!-- Toolbar Name/text -->
+            <toolbarName>SAP Toolbar</toolbarName>
+            <!-- toolbar icon -->
+            <icon>SAP_Icon</icon>
+            <!-- Template id that contains html for the toolbar. See <zimletName>/templates/Sales.template -->
+            <toolbarTemplateId>TEMPLATE_FOR_SAP_SEM_ITEM_TOOLBAR</toolbarTemplateId>
+            <!-- add toolbar buttons-->
+            <toolbarButtons>
+                <!-- A single toolbar button -->
+                <toolbarButton>
+                    <!-- toolbar button name -->
+                    <name>Change Threshold</name>
+                    <!-- toolbar button icon -->
+                    <icon>SAP_Icon</icon>
+                </toolbarButton>
+                <!-- A single toolbar button -->
+                <!-- A single toolbar button -->
+                <toolbarButton>
+                    <!-- toolbar button name -->
+                    <name>Drill down</name>
+                    <!-- toolbar button icon -->
+                    <icon>SAP_Icon</icon>
+                </toolbarButton>
+            </toolbarButtons>
+        </toolbar>
+    </item>
+
+    <!-- Add an item (matches "q2 forecast") -->
+    <item>
+        <tooltip>
+            <textToMatch>q2 forecast</textToMatch>
+            <tooltipTemplateId>TEMPLATE_FOR_Q2_FORECAST_TOOLTIP</tooltipTemplateId>
+            <contextMenu>
+                <contextMenuItem>
+                    <name>Display Data</name>
+                    <icon>Forecast_icon</icon>
+                </contextMenuItem>
+                <contextMenuItem>
+                    <name>Change Threshold</name>
+                    <icon>Forecast_icon</icon>
+                </contextMenuItem>
+                <contextMenuItem>
+                    <name>Change date range</name>
+                    <icon>Forecast_icon</icon>
+                </contextMenuItem>
+                <contextMenuItem>
+                    <name>Drill down</name>
+                    <icon>Forecast_icon</icon>
+                </contextMenuItem>
+            </contextMenu>
+        </tooltip>
+        <popupDialog>
+            <dialogTemplateId>TEMPLATE_FOR_Q2_FORECAST_DIALOG</dialogTemplateId>
+        </popupDialog>
+        <toolbar>
+            <toolbarName>Forecast Toolbar</toolbarName>
+            <icon>Forecast_icon</icon>
+            <toolbarTemplateId>TEMPLATE_FOR_Q2_FORECAST_TOOLBAR</toolbarTemplateId>
+            <toolbarButtons>
+                <toolbarButton>
+                    <name>Change Threshold</name>
+                    <icon>Forecast_icon</icon>
+                </toolbarButton>
+                <toolbarButton>
+                    <name>Drill down</name>
+                    <icon>Forecast_icon</icon>
+                </toolbarButton>
+            </toolbarButtons>
+        </toolbar>
+    </item>
+
+       <!-- Add an item (matches "patientId: 56789012345") -->
+    <item>
+        <tooltip>
+            <textToMatch>Patient ID: 56789012345</textToMatch>
+            <tooltipTemplateId>TEMPLATE_FOR_EPIC_TOOLTIP</tooltipTemplateId>
+            <contextMenu>
+                <contextMenuItem>
+                    <name>Show History</name>
+                    <icon>Epic_Icon</icon>
+                </contextMenuItem>
+                <contextMenuItem>
+                    <name>Send Alert</name>
+                    <icon>Epic_Icon</icon>
+                </contextMenuItem>
+                <contextMenuItem>
+                    <name>Escalate to MD</name>
+                    <icon>Epic_Icon</icon>
+                </contextMenuItem>
+                <contextMenuItem>
+                    <name>Drill down</name>
+                    <icon>Epic_Icon</icon>
+                </contextMenuItem>
+            </contextMenu>
+        </tooltip>
+        <popupDialog>
+            <dialogTemplateId>TEMPLATE_FOR_EPIC_DIALOG</dialogTemplateId>
+        </popupDialog>
+        <toolbar>
+            <toolbarName>Healthcare toolbar</toolbarName>
+            <icon>Epic_Icon</icon>
+            <toolbarTemplateId>TEMPLATE_FOR_EPIC_TOOLBAR</toolbarTemplateId>
+            <toolbarButtons>
+                <toolbarButton>
+                    <name>Escalate to MD</name>
+                    <icon>Epic_Icon</icon>
+                </toolbarButton>
+                <toolbarButton>
+                    <name>Send Alert</name>
+                    <icon>Epic_Icon</icon>
+                </toolbarButton>
+            </toolbarButtons>
+        </toolbar>
+    </item>
+</items>

@@ -1,0 +1,141 @@
+/*
+ * ***** BEGIN LICENSE BLOCK *****
+ * Zimbra Collaboration Suite Zimlets
+ * Copyright (C) 2007, 2010, 2014 Zimbra, Inc.
+ * 
+ * The contents of this file are subject to the Common Public Attribution License Version 1.0 (the "License");
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at: http://www.zimbra.com/license
+ * The License is based on the Mozilla Public License Version 1.1 but Sections 14 and 15 
+ * have been added to cover use of software over a computer network and provide for limited attribution 
+ * for the Original Developer. In addition, Exhibit A has been modified to be consistent with Exhibit B. 
+ * 
+ * Software distributed under the License is distributed on an "AS IS" basis, 
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing rights and limitations under the License. 
+ * The Original Code is Zimbra Open Source Web Client. 
+ * The Initial Developer of the Original Code is Zimbra, Inc. 
+ * All portions of the code are Copyright (C) 2007, 2010, 2014 Zimbra, Inc. All Rights Reserved. 
+ * ***** END LICENSE BLOCK *****
+ */
+.ImgCC-panelIcon {
+  background: url("cc-icon.png") no-repeat 0 0;
+  width: 16px;
+  height: 16px;
+  overflow: hidden;
+}
+.cc_hidden {
+display:none
+}
+.cc_shown {
+display:block
+}
+.cc_processbarBackground {
+position: absolute;
+top: 50px; 
+left: 10px; 
+width: 600px; 
+height: 10px; 
+background-color: white; 
+font-size: 1px;
+}
+
+.cc_processbarForeground {
+position: absolute;
+top: 50px; 
+left: 10px; 
+width: 5px; 
+height: 10px; 
+background-color: green; 
+font-size: 1px;
+}
+
+.cc_tableclass {
+ border:0px;
+ padding: 10px;
+ width:100%;
+}
+
+.cc_thclass {
+text-align: center;
+background-color: #606060;
+color:#FFFFFF;
+font-size:4px;
+
+}
+
+.cc_tdclass {
+font-size: 16px;
+font-family: "Times New Roman";
+text-align: left;
+}
+
+.cc_dupeTDclassComplete {
+font-size: 20px;
+font-family: "Times New Roman";
+color:green;
+}
+.cc_dupeTDclassPartial {
+font-size: 20px;
+font-family: "Times New Roman";
+color:orange;
+}
+.cc_dupeTDclassConflict {
+font-size: 20px;
+font-family: "Times New Roman";
+color:red;
+}
+
+.cc_dupeTDclassNoColor {
+font-size: 20px;
+font-family: "Times New Roman";
+}
+.cc_addToNotes {
+font-size: 12px;
+font-family: "Times New Roman";
+color:gray;
+}
+.cc_reviewConflt {
+font-size: 12px;
+font-family: "Times New Roman";
+color:red;
+display:shown;
+}
+
+.cc_expndclpseall {
+font-size: 12px;
+cursor: pointer;
+color:darkblue;
+text-decoration:underline;
+
+}
+
+.cc_dupeListLink {
+border: 0pt none;
+display: block;
+letter-spacing: 0.005em;
+padding-left: 20px;
+border-bottom:2px dashed #3D7DC7;
+color:#51A2FF;
+text-decoration:none;
+font-weight:bold;
+border-style:solid solid none;
+font-family:trebuchet ms,verdana,tahoma,arial,sans-serif;
+text-align:left;
+}
+.cc_topRow {
+ background-color:#D8D8D8;
+font-weight:bold;
+ border-bottom:2px solid gray;
+ border-right:2px solid gray;
+ }
+
+ .cc_confltFld {
+ color: red;
+ font-style: italic;
+ }
+ .cc_confltChkbox {
+font-size: 12px;
+font-family: "Times New Roman";
+color:white;
+ }

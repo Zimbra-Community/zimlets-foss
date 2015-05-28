@@ -1,0 +1,58 @@
+<!--
+ * ***** BEGIN LICENSE BLOCK *****
+ * Zimbra Collaboration Suite Zimlets
+ * Copyright (C) 2011, 2013, 2014 Zimbra, Inc.
+ * 
+ * The contents of this file are subject to the Common Public Attribution License Version 1.0 (the "License");
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at: http://www.zimbra.com/license
+ * The License is based on the Mozilla Public License Version 1.1 but Sections 14 and 15 
+ * have been added to cover use of software over a computer network and provide for limited attribution 
+ * for the Original Developer. In addition, Exhibit A has been modified to be consistent with Exhibit B. 
+ * 
+ * Software distributed under the License is distributed on an "AS IS" basis, 
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing rights and limitations under the License. 
+ * The Original Code is Zimbra Open Source Web Client. 
+ * The Initial Developer of the Original Code is Zimbra, Inc. 
+ * All portions of the code are Copyright (C) 2011, 2013, 2014 Zimbra, Inc. All Rights Reserved. 
+ * ***** END LICENSE BLOCK *****
+-->
+<zimlet name="com_zimbra_cloudchat"
+        version="1.0"
+        label="${msg.label}"
+        description="${msg.description}">
+
+    <!-- load parent classes and widgets first -->
+    <include>SocketIO/socket.io.js</include>
+    <!--  <include>http://localhost:3000/socket.io/socket.io.js</include> -->
+    <include>model/ZmCloudList.js</include>
+	<include>view/ZmCloudListView.js</include>
+	<include>controller/ZmCloudChatController.js</include>
+
+    <include>templates/ZmCloudChat.template.js</include>
+    <include>model/ZmCloudChatBuddy.js</include>
+    <include>model/ZmCloudChatBuddyList.js</include>
+    <include>model/ZmCloudChatSocket.js</include>
+    <include>view/ZmCloudChatBuddyListView.js</include>
+    <include>controller/ZmCloudChatBuddyListController.js</include>
+
+    <include>widgets/ZmCloudChatWithUsersDlg.js</include>
+    <include>widgets/ZmCloudChatAddUsersDlg.js</include>
+	<include>event/ZmCloudChatEvent.js</include>
+    <include>event/ZmCloudChatBuddyEvent.js</include>
+
+	<!-- Chat app -->
+	<include>model/ZmCloudChatList.js</include>
+	<include>view/ZmCloudChatListView.js</include>
+	<include>view/ZmCloudChatTabPage.js</include>
+    <include>view/ZmCloudChatTabView.js</include>
+
+	<include>controller/ZmCloudChatListController.js</include>
+	<include>apps/ZmCloudChatApp.js</include>
+	
+	<include>ZmCloudChatZimlet.js</include>
+	
+	<includeCSS>cloudchat.css</includeCSS>
+	<handlerObject>ZmCloudChatZimlet</handlerObject>
+</zimlet>

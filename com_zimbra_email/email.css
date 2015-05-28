@@ -1,0 +1,119 @@
+/*
+ * ***** BEGIN LICENSE BLOCK *****
+ * Zimbra Collaboration Suite Zimlets
+ * Copyright (C) 2010, 2011, 2012, 2014 Zimbra, Inc.
+ * 
+ * The contents of this file are subject to the Common Public Attribution License Version 1.0 (the "License");
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at: http://www.zimbra.com/license
+ * The License is based on the Mozilla Public License Version 1.1 but Sections 14 and 15 
+ * have been added to cover use of software over a computer network and provide for limited attribution 
+ * for the Original Developer. In addition, Exhibit A has been modified to be consistent with Exhibit B. 
+ * 
+ * Software distributed under the License is distributed on an "AS IS" basis, 
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing rights and limitations under the License. 
+ * The Original Code is Zimbra Open Source Web Client. 
+ * The Initial Developer of the Original Code is Zimbra, Inc. 
+ * All portions of the code are Copyright (C) 2010, 2011, 2012, 2014 Zimbra, Inc. All Rights Reserved. 
+ * ***** END LICENSE BLOCK *****
+ */
+/*.ImgEmailZimletRadio {
+	background:url("img/EmailZimletRadio.gif") no-repeat center center;
+	width:8px;
+	height:8px;
+	overflow:hidden
+}*/
+
+.ImgEmailZimletNavBarBG {
+	background:url("img/EmailZimletNavBar.png") repeat;
+}
+
+.EmailToolTipSlideText {
+	position:relative;
+	top:40%;
+	font-size:12px;
+	font-weight:bold;
+}
+
+.EmailToolTipSlideErrorColor {
+	color:#8C0000;
+}
+.EmailToolTipSlideMsgColor {
+	color:#666;
+}
+
+.ImgUnknownPerson_contact {
+	background:url("img/UnknownPerson_contact.gif") no-repeat center center;
+	width:16px;
+	height:16px;
+	overflow:hidden;
+}
+
+.ImgMail_icon {
+	background:url("img/mail_icon.png") no-repeat center center;
+	width:16px;
+	height:16px;
+	overflow:hidden;
+}
+
+.ImgCalendar_icon {
+	background:url("img/calendar_icon.png") no-repeat center center;
+	width:16px;
+	height:16px;
+	overflow:hidden;
+}
+
+.Img_available,
+.Img_unavailable,
+.Img_busy,
+.Img_dnd,
+.Img_onthephone,
+.Img_away,
+.Img_vacation,
+.Img_unknown {
+	background:transparent no-repeat 0 0;
+	width:12px;
+	height:12px;
+	overflow:hidden;
+	margin-right:.5em;
+}
+
+.Img_available {
+	background-image: url("img/ImgPresenceAvailable.png");
+}
+
+.Img_unavailable,
+.Img_busy,
+.Img_dnd,
+.Img_onthephone {
+	background-image: url("img/ImgPresenceUnavailable.png");
+}
+
+.Img_away,
+.Img_vacation,
+.Img_unknown {
+	background-image: url("img/ImgPresenceBusy.png");
+}
+
+.ImgEmailZimlet_closeBtn {
+	background:url("img/EmailZimlet_closeBtn.png") no-repeat center center;
+	width:16px;
+	height:16px;
+	overflow:hidden;
+}
+
+.EmailZimlet_veil {
+	position:absolute;
+	display:block;
+	width:100%;
+	height:100%;
+	z-index:700;
+	background:black;
+	opacity:0.2;
+	zoom:1;
+	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=20);
+	cursor:pointer;
+	top:0px;
+	left:0px;
+}

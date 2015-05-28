@@ -1,0 +1,33 @@
+<template id='Frame'>
+	<div id='UnknownPersonSlide_Frame' style='background:white;display:block;height:100%;overflow:auto;padding:10px;'>
+		<table width='100%'><tr>
+			<td valign='top' width='65'><div id="${photoParentId}"></div></td>
+			<td><div id="${textDivId}" style='margin-left:10px;'></div></td>
+		</tr></table>
+	</div>
+</template>
+
+<template id='ContactDetails'>
+	<$ if (data.fullName) { $>
+		<div><label id='UnknownPersonSlide_NameAnchorId' class='FakeAnchor' style='font-size:15px;font-weight:bold;'><$= AjxStringUtil.htmlEncode(data.fullName) $></label></div>
+	<$ } $>
+	<table style='margin-bottom:.5em;'><tr id='row_Presence'>
+			<td><div id='img_Presence'></div></td>
+			<td><label id='text_Presence'></label></td>
+	</tr></table>
+	<$ if (data.jobTitle) { $>
+		<div><label ><$= AjxStringUtil.htmlEncode(data.jobTitle) $></label></div>
+	<$ } $>
+	<$ if (data.email) { $>
+		<div><label  id='UnknownPersonSlide_EmailAnchorId' class='FakeAnchor'><$= AjxStringUtil.htmlEncode(data.email) $></label></div>
+	<$ } $>
+	<$ if (data.mobilePhone) { $>
+		<div><label id='UnknownPersonSlide_mobilePhoneAnchorId' class='FakeAnchor'><$= AjxStringUtil.htmlEncode(data.mobilePhone) $> (<$= ZmMsg.cell $>)</label></div>
+	<$ } $>
+	<$ if (data.workPhone) { $>
+		<div><label id='UnknownPersonSlide_workPhoneAnchorId' class='FakeAnchor'><$= AjxStringUtil.htmlEncode(data.workPhone) $> (<$= ZmMsg.work $>)</label></div>
+	<$ } $>
+	<$ if (data.address) { $>
+		<div><label><$= AjxStringUtil.htmlEncode(data.address) $> (<$= ZmMsg.work $>)</label></div>
+	<$ } $>
+</template>

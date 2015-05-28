@@ -1,0 +1,133 @@
+.zss-tree-container {
+	height: 93%;
+}
+
+.zss-file-explorer,
+.zss-folder-explorer {
+	overflow: auto !important;
+	height: 100%;
+	border: 1px solid #BFBFBF;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+/* If choose folder, then remove bottom border to prevent two lines from showing*/
+
+.zss-file-explorer .DwtTreeItemLevel1ChildDiv,
+.zss-folder-explorer .DwtTreeItemLevel1ChildDiv {
+	padding-left: 16px;
+}
+
+.zss-file {
+	padding: 0 0 10px;
+	height: auto;
+}
+
+.zss-ghost-file {
+	visibility: hidden;
+}
+
+.zss-loader,.zss-no-result {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: white;
+	text-align: center;
+}
+.zss-loader span,
+.zss-no-result span {
+	margin-top: -7px;
+	left: 0;
+	position: absolute;
+	top: 50%;
+	width: 100%;
+}
+
+.zss-file .zss-file {
+	padding: 0.5em 0 0;
+}
+
+.zss-refresh-button .ZButtonTable {
+	border: 0;
+}
+
+
+/*FILE DETAILS*/
+.zss-file-name {
+	margin-bottom: 5px;
+}
+.zss-file-details {
+	font-size: 10px;
+}
+
+.zss_secure_link {
+	padding-top: 5px;
+}
+/*OVERRIDING DEFAULT FILE ICONS*/
+.zss-file-explorer .imageCell {
+	padding: 0.6em 0.7em 0 0.3em;
+}
+.zss-file-explorer .imageCell div {
+	height: 32px !important;
+	width: 32px !important;
+}
+.zss-file-explorer .ZTreeItemCheckbox {
+	margin-top: 1em;
+}
+.zss-file-explorer .ImgZipDoc {
+	background: url("img/archive_32.png");
+}
+
+.zss-file-explorer .ImgExeDoc {
+	background: url("img/system_32.png");
+}
+
+.zss-file-explorer .ImgMSWordDoc,
+.zss-file-explorer .ImgDoc {
+	background: url("img/document_32.png");
+}
+.zss-file-explorer .ImgMSProjectDoc,
+.zss-file-explorer .ImgMessageDoc,
+.zss-file-explorer .ImgMSVisioDoc,
+.zss-file-explorer .ImgUnknownDoc,
+.zss-file-explorer .ImgGenericDoc {
+	background: url("img/generic_32.png");
+}
+.zss-file-explorer .ImgMSExcelDoc {
+	background: url("img/spreadsheet_32.png");
+}
+
+.zss-file-explorer .ImgMSPowerpointDoc {
+	background: url("img/presentation_32.png");
+}
+
+.zss-file-explorer .ImgAudioDoc {
+	background: url("img/audio_media_32.png");
+}
+.zss-file-explorer .ImgImageDoc {
+	background: url("img/image_media_32.png");
+}
+
+.zss-file-explorer .ImgHtmlDoc {
+	background: url("img/programming_32.png");
+}
+.zss-file-explorer .ImgVideoDoc {
+	background: url("img/video_media_32.png");
+}
+
+/*FILE SELECTION & HOVER STYLES*/
+.DwtTreeItem.zss-file {
+	border: 1px solid #fff;
+	margin: 3px 3px 0;
+}
+.zss-file-selected .DwtTreeItem.zss-file, .DwtTreeItem.zss-file:hover {
+	border: 1px solid rgb(0,153,233);
+	border-radius: 3px;
+}
+
+.zss-file-selected .DwtTreeItem.zss-file {
+	background: rgb(229,244,250);
+}

@@ -1,0 +1,9 @@
+<zimlet name="com_zimbra_zss" version="1.0" label="${msg.zimletLabel}" description="${msg.description}" target="main compose-window view-window">
+    <include>file_explorer.js</include>
+    <include>zss.js</include>
+    <includeCSS>com_zimbra_zss.css</includeCSS>
+    <handlerObject>com_zimbra_zss_HandlerObject</handlerObject>
+    <userProperties>
+        <property type="string" name="zss_url" value="/zss"/>
+    </userProperties>
+</zimlet>

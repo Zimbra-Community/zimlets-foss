@@ -1,0 +1,50 @@
+<!--
+ * ***** BEGIN LICENSE BLOCK *****
+ * Zimbra Collaboration Suite Zimlets
+ * Copyright (C) 2007, 2008, 2009, 2010, 2013, 2014 Zimbra, Inc.
+ * 
+ * The contents of this file are subject to the Common Public Attribution License Version 1.0 (the "License");
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at: http://www.zimbra.com/license
+ * The License is based on the Mozilla Public License Version 1.1 but Sections 14 and 15 
+ * have been added to cover use of software over a computer network and provide for limited attribution 
+ * for the Original Developer. In addition, Exhibit A has been modified to be consistent with Exhibit B. 
+ * 
+ * Software distributed under the License is distributed on an "AS IS" basis, 
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing rights and limitations under the License. 
+ * The Original Code is Zimbra Open Source Web Client. 
+ * The Initial Developer of the Original Code is Zimbra, Inc. 
+ * All portions of the code are Copyright (C) 2007, 2008, 2009, 2010, 2013, 2014 Zimbra, Inc. All Rights Reserved. 
+ * ***** END LICENSE BLOCK *****
+-->
+<zimlet name="com_zimbra_blog"
+        version="1.1"
+        label="Blog"
+        description="Drag-and-drop items to post to a blog.">
+    <include>wordpress.js</include>
+    <include>typepad.js</include>
+    <include>blog.js</include>
+    <includeCSS>blog.css</includeCSS>
+    <handlerObject>Com_Zimbra_Blog</handlerObject>
+    <zimletPanelItem label="Blog" icon="Blog-panelIcon">
+        <toolTipText>Drag-and-drop items to post to a blog.</toolTipText>
+        <dragSource type="ZmContact" />
+        <dragSource type="ZmMailMsg" />
+        <dragSource type="ZmNotebook" />
+        <dragSource type="ZmAppt" />
+        <dragSource type="ZmConv" />
+        <contextMenu>
+            <menuItem label="Preferences..." id="PREFERENCES"/>
+        </contextMenu>
+    </zimletPanelItem>
+    <userProperties>
+        <property type="string" name="user" minLength="4" maxLength="32" label="Login ID" />
+        <property type="password" name="passwd" minLength="4" maxLength="32" label="Password" />
+        <property type="string" name="blogurl" minLength="4" maxLength="96" label="Blog URL" />
+        <property type="enum" name="blogtype" width="100" label="Blog Type" value="WordPress">
+            <item label="WordPress" value="WordPress"/>
+            <item label="TypePad" value="TypePad"/>
+        </property>
+    </userProperties>
+</zimlet>
