@@ -608,7 +608,7 @@ function(text, el, match) {
 CalSchedulerView.prototype._autocompleteKeyUpCallback =
 function(ev, aclv, result) {
 	var key = DwtKeyEvent.getCharCode(ev);
-	if ((key == 3 || key == 13) && !aclv.getVisible()) {
+	if (DwtKeyEvent.IS_RETURN[key] && !aclv.getVisible()) {
 		var el = DwtUiEvent.getTargetWithProp(ev, "id");
 		this._handleAttendeeField(el);
 	}

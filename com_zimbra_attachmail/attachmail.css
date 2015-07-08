@@ -1,7 +1,7 @@
-<!--
+/*
  * ***** BEGIN LICENSE BLOCK *****
  * Zimbra Collaboration Suite Zimlets
- * Copyright (C) 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015 Zimbra, Inc.
+ * Copyright (C) 2009, 2010, 2011, 2012, 2014 Zimbra, Inc.
  * 
  * The contents of this file are subject to the Common Public Attribution License Version 1.0 (the "License");
  * you may not use this file except in compliance with the License. 
@@ -14,22 +14,47 @@
  * WITHOUT WARRANTY OF ANY KIND, either express or implied. 
  * See the License for the specific language governing rights and limitations under the License. 
  * The Original Code is Zimbra Open Source Web Client. 
- * The Initial Developer of the Original Code is Zimbra, Inc.
- * All portions of the code are Copyright (C) 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015 Zimbra, Inc. All Rights Reserved.
+ * The Initial Developer of the Original Code is Zimbra, Inc. 
+ * All portions of the code are Copyright (C) 2009, 2010, 2011, 2012, 2014 Zimbra, Inc. All Rights Reserved. 
  * ***** END LICENSE BLOCK *****
--->
-<zimlet name="com_zimbra_email"
-        version="11.11"
-        target="main view-window"
-        label="${msg.zimletLabel}"
-        description="${msg.description}">
-	<include>templates/Email1.template.js</include>
-	<include>email.js</include>
-	<include>EmailToolTipSlideShow.js</include>
-	<include>EmailToolTipslide.js</include>
-	<include>EmailToolTipPrefDialog.js</include>
-	<include>SeriesAnimation.js</include>
-	<include>UnknownPersonSlide.js</include>
-	<includeCSS>email.css</includeCSS>
-	<handlerObject>com_zimbra_email_handlerObject</handlerObject>
-</zimlet>
+ */
+.Imgattachmail-panelIcon {
+    background: url("attachmail.gif") no-repeat 0 0;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+}
+
+.AttachMailTabBox {
+    background-color: #FDFCFA;
+    border-right:1px solid #E0E0E0;
+}
+
+.AttachMailRowDiv {
+    border-style: solid;
+    border-width: 1px 0;
+    cursor: pointer;
+    border-color: #E0E0E0;
+    padding: 3px 0;
+}
+
+.AttachMailSubject {
+    font-weight: bold;
+    font-size: 13px;
+    color: #2B2A2B;
+}
+
+.AttachMailFrom {
+    font-weight: bold;
+    font-size: 11px;
+    color: #2B2A2B;
+}
+
+.AttachMailFrag {
+    overflow: hidden;
+    color: gray;
+}
+
+.AttachMailList .Row-selected, .AttachMailList .Row-focused{
+  border: none;
+}

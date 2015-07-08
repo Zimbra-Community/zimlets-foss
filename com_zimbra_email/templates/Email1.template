@@ -15,9 +15,15 @@
 			<td><div id='img_Presence'></div></td>
 			<td><label id='text_Presence'></label></td>
 	</tr></table>
-	<$ if (data.jobTitle) { $>
-		<div><label ><$= AjxStringUtil.htmlEncode(data.jobTitle) $></label></div>
-	<$ } $>
+	<$ var fields = this.com_zimbra_email.jobTitleDepartmentCompany.split(",");
+	   var num = fields.length;
+	   var i;
+	   for (i = 0; i < num; i++) {
+	$>
+	<div><label><$= AjxStringUtil.htmlEncode(data[fields[i]]) $></label></div>
+	<$
+	   }
+	$>
 	<$ if (data.email) { $>
 		<div><label  id='UnknownPersonSlide_EmailAnchorId' class='FakeAnchor'><$= AjxStringUtil.htmlEncode(data.email) $></label></div>
 	<$ } $>
@@ -26,6 +32,9 @@
 	<$ } $>
 	<$ if (data.workPhone) { $>
 		<div><label id='UnknownPersonSlide_workPhoneAnchorId' class='FakeAnchor'><$= AjxStringUtil.htmlEncode(data.workPhone) $> (<$= ZmMsg.work $>)</label></div>
+	<$ } $>
+	<$ if (data.homePhone) { $>
+		<div><label id='UnknownPersonSlide_workPhoneAnchorId' class='FakeAnchor'><$= AjxStringUtil.htmlEncode(data.homePhone) $> (<$= ZmMsg.home $>)</label></div>
 	<$ } $>
 	<$ if (data.address) { $>
 		<div><label><$= AjxStringUtil.htmlEncode(data.address) $> (<$= ZmMsg.work $>)</label></div>
