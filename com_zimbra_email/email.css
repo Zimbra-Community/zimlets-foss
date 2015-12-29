@@ -64,6 +64,13 @@
 	overflow:hidden;
 }
 
+.ImgConversation_icon {
+	background:url("img/ImgConversation.png") no-repeat center center;
+	width:16px;
+	height:16px;
+	overflow:hidden;
+}
+
 .Img_available,
 .Img_unavailable,
 .Img_busy,

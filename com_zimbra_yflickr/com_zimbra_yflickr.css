@@ -1,0 +1,226 @@
+/*
+ * ***** BEGIN LICENSE BLOCK *****
+ * Zimbra Collaboration Suite Zimlets
+ * Copyright (C) 2007, 2009, 2010, 2013, 2014 Zimbra, Inc.
+ * 
+ * The contents of this file are subject to the Common Public Attribution License Version 1.0 (the "License");
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at: http://www.zimbra.com/license
+ * The License is based on the Mozilla Public License Version 1.1 but Sections 14 and 15 
+ * have been added to cover use of software over a computer network and provide for limited attribution 
+ * for the Original Developer. In addition, Exhibit A has been modified to be consistent with Exhibit B. 
+ * 
+ * Software distributed under the License is distributed on an "AS IS" basis, 
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing rights and limitations under the License. 
+ * The Original Code is Zimbra Open Source Web Client. 
+ * The Initial Developer of the Original Code is Zimbra, Inc. 
+ * All portions of the code are Copyright (C) 2007, 2009, 2010, 2013, 2014 Zimbra, Inc. All Rights Reserved. 
+ * ***** END LICENSE BLOCK *****
+ */
+/* styles for the yflickr zimlet */
+
+.ImgABOUT-panelIcon {
+background: transparent url("about.png") no-repeat left center;
+width: 16px;
+height: 16px;
+overflow: hidden;
+}
+
+.ImgAUTHORIZE-panelIcon {
+background: transparent url("authorize.png") no-repeat left center;
+width: 16px;
+height: 16px;
+overflow: hidden;
+}
+
+.ImgCREDITS-panelIcon {
+background: transparent url("credits.png") no-repeat left center;
+width: 16px;
+height: 16px;
+overflow: hidden;
+}
+
+.ImgHELP-panelIcon {
+background: transparent url("help.png") no-repeat left center;
+width: 16px;
+height: 16px;
+overflow: hidden;
+}
+
+.ImgFLICKR-panelIcon {
+	background: transparent url("flickr_logo.gif") no-repeat left center;
+	width: 20px;
+	height: 16px;
+	overflow: hidden;
+}
+
+/* Single image container (unselected) */
+.Yflickr_img_container_unselected
+{
+    display:inline;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+/* Single image container (selected) */
+.Yflickr_img_container_selected
+{
+    display:inline;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+img.Yflickr_selected
+{
+    border-style: solid;
+    border-color: purple;   /* gotcha! */
+    border-width: 2px;
+    cursor: pointer;
+}
+
+img.Yflickr_unselected {
+    border-style: solid;
+    border-color: transparent;
+    border-width: 2px;
+    cursor: pointer;
+}
+
+/* class describing the div element that contains the view-state of the flickr photo attachment bar */
+div.Yflickr_viewstate_attach
+{
+    display:block;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+/* contains the text bearing the legend 'Flickr Photoset' */
+span.Yflickr_viewstate_photosetmsg
+{
+    margin-right: 10px;
+    float:left;
+    vertical-align: middle;
+}
+
+/* Paginator div containing:
+   left arrow div, slide X-of-Y div, and right arrow div
+ */
+span.Yflickr_viewstate_paginator
+{
+    display:inline;
+    float:right;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+/* Search-by-tag div containing the input text field for tag name */
+div.Yflickr_viewstate_searchbytag
+{
+    display:inline;
+    float:left;
+    vertical-align: middle;
+}
+
+input.Yflickr_viewstate_searchbytag
+{
+    display:inline;
+    float:left;
+    vertical-align: middle;
+}
+
+/* this contains the left arrow inside the paginator */
+span.Yflickr_viewstate_paginator_left
+{
+    display:inline;
+    float:left;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+/* this contains the page numbers inside the paginator (between the left and right arrows) */
+span.Yflickr_viewstate_paginator_numbers
+{
+    display:inline;
+    float:left;
+    vertical-align: middle;
+    margin-left: 10px;
+    margin-right: 10px;
+    /* width: 50px; */
+}
+
+/* this contains the right arrow inside the paginator */
+span.Yflickr_viewstate_paginator_right
+{
+    display:inline;
+    float:left;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+/* this div contains an entire slide of photos from the set  */
+div.Yflickr_view_attach
+{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 95%;
+	height: 215px;
+}
+
+div.Yflickr_sliderow
+{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+div.Yflickr_busyMsg
+{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    text-align: center;
+}
+
+div.Yflickr_viewstate_header
+{
+	display:block;
+    margin-left: 20px;
+    margin-top: 10px;
+    height:25px;
+}
+
+.Yflickr_hCenter
+{
+    display:block;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.Yflickr_hCenter img
+{
+    width:250px;
+    height:175px;
+    overflow:Scroll;
+}
+
+.Yflickr_hLeft
+{
+    display:block;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    margin-left: 3px;
+    text-align: left;
+}
+

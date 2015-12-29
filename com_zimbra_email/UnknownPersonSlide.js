@@ -112,6 +112,13 @@ UnknownPersonSlide.prototype._setCalendarFrame =
         this.emailZimlet.slideShow.addSlide(slide);
     };
 
+UnknownPersonSlide.prototype._setChatFrame =
+	function() {
+		var selectCallback = this._handleChatSlideSelect.bind(this);
+		var slide = new EmailToolTipSlide(null, true, "Conversation_icon", selectCallback, this.emailZimlet.getMessage("slideChatTooltip"));
+		this.emailZimlet.slideShow.addSlide(slide);
+	};
+
 UnknownPersonSlide.prototype._setPresence =
     function() {
 
@@ -229,6 +236,13 @@ UnknownPersonSlide.prototype._handleCalendarSlideSelect =
         AjxDispatcher.run("GetCalController").newAppointment(appt, null, null, null);
     };
 
+UnknownPersonSlide.prototype._handleChatSlideSelect =
+	function() {
+		this.emailZimlet.popdown();
+		appCtxt.getAppController().getApp(ZmApp.CHAT).startChat(this.xmppURI);
+	};
+
+
 UnknownPersonSlide.prototype._getContactDetailsAndShowTooltip =
 function() {
 	this._slide.setInfoMessage(this.emailZimlet.getMessage("loading"));
@@ -256,10 +270,9 @@ function() {
 // Common code for AB & GAL search
 // If response is not undefined, the call is from the GAL search handler
 // If contact is not undefined, the call is from AB
+UnknownPersonSlide.prototype._handleContactDetails = function(contact, response) {
 
-UnknownPersonSlide.prototype._handleContactDetails =
-function(contact, response) {
-	var attrs = null;
+	var attrs = {};
     var id = null;
 	if (response) {
 		var data = response.getResponse();
@@ -267,16 +280,12 @@ function(contact, response) {
 		var cn = r.cn;
 		if (cn && cn[0]) {
             id = cn[0].id;
-			attrs = cn[0]._attrs;
+			attrs = AjxUtil.hashCopy(cn[0]._attrs, ['objectClass']);
 		}
     }
 
-	if (attrs && contact && contact.attr) {
-		//add or overwrite any attributes that are present in the local contact's info
-		attrs = AjxUtil.hashUpdate(attrs, contact.attr, true);
-	} else {
-		//the use of hashCopy is due to bug 81951 - Don't modify the contact attributes.
-		attrs = attrs || (contact && contact.attr && AjxUtil.hashCopy(contact.attr)) || {};
+	if (contact && contact.attr) {
+        AjxUtil.hashUpdate(attrs, contact.attr, true);
 	}
 
     attrs["fullName"] =  this.emailZimlet.fullName || attrs["fullName"] || contact && contact._fileAs;
@@ -294,7 +303,7 @@ function(contact, response) {
 UnknownPersonSlide.prototype._getPresence =
     function() {
         var now = new Date();
-        //debugger;
+
         // Do we have the presence data for this user in the presence cache
         // Also check for cache staleness: currently anything over 30 secs is considered stale
         var then = this._presenceCache[this._presentity] && this._presenceCache[this._presentity].timestamp || 0;
@@ -307,7 +316,7 @@ UnknownPersonSlide.prototype._getPresence =
             this.emailZimlet._presenceProvider(this._presentity, this._handlePresence.bind(this));
         }
         return null;
-    }
+};
 
 //
 // Callback from the presence provider.
@@ -358,7 +367,12 @@ function(attrs) {
 		var workCity = attrs.workCity || "";
 		var workStreet = attrs.workStreet || "";
 		var workPostalCode = attrs.workPostalCode || "";
-		var address = [workStreet, " ", workCity, " ", workState, " ", workPostalCode].join("");
+
+		var pattern = this.emailZimlet.getMessage("postalAddress");
+		var formatter = new AjxMessageFormat(pattern);
+		var args = [workStreet, workCity, workState, workPostalCode];
+		var address = AjxStringUtil.trim(formatter.format(args), true);
+
 		attrs["address"] = AjxStringUtil.trim(address);
 	}
 
@@ -368,14 +382,38 @@ function(attrs) {
         if (imParts.length == 2){
 			var imProtocol = imParts[0];
 			im = im.split(":")[1];
-			if (imProtocol && imProtocol == "other") {
-				imProtocol = "im";
-			}
-			else if (imProtocol && imProtocol == "aol") {
-				imProtocol = "aim";
-			}
-            im = "<a  id='UnknownPersonSlide_imAnchorId' href='" + imProtocol + ":" + AjxStringUtil.htmlEncode(im.substring(2)) + "'>" + AjxStringUtil.htmlEncode(im.substring(2)) + "</a>" ;
-            this.imURI = attrs["imURI"] = im;
+            if (imProtocol && imProtocol == "xmpp") {
+                if (appCtxt.get(ZmSetting.CHAT_FEATURE_ENABLED) && appCtxt.get(ZmSetting.CHAT_ENABLED)) {
+                    var chatApp = appCtxt.getAppController().getApp(ZmApp.CHAT);
+                    if (chatApp && chatApp.getRosterContact(im.substring(2))) {
+                        this.xmppURI = attrs["xmppURI"] = AjxStringUtil.htmlEncode(im.substring(2));
+                        this._setChatFrame();
+                    }
+                }
+            } else {
+                if (imProtocol && imProtocol == "other") {
+                    imProtocol = "im";
+                }
+                else if (imProtocol && imProtocol == "aol") {
+                    imProtocol = "aim";
+                }
+                im = "<a  id='UnknownPersonSlide_imAnchorId' href='" + imProtocol + ":" + AjxStringUtil.htmlEncode(im.substring(2)) + "'>" + AjxStringUtil.htmlEncode(im.substring(2)) + "</a>";
+                this.imURI = attrs["imURI"] = im;
+            }
+
+        }
+    } else if (appCtxt.get(ZmSetting.CHAT_FEATURE_ENABLED) && appCtxt.get(ZmSetting.CHAT_ENABLED)) {
+        var chatApp = appCtxt.getAppController().getApp(ZmApp.CHAT);
+        if (chatApp) {
+            for (var i = 0; i < 4; i++) {
+                var emailAddr = "email" + ((i == 0) ? "" : i);
+                if (attrs[emailAddr] && chatApp.getRosterContact(attrs[emailAddr])) {
+                    //check if this contact is part of the buddy list.
+                    this.xmppURI = AjxStringUtil.htmlEncode(attrs[emailAddr]);
+                    this._setChatFrame();
+                    break;
+                }
+            }
         }
     }
 
@@ -395,30 +433,6 @@ function(attrs) {
 	if (frame) {
 		frame.onmouseup =  AjxCallback.simpleClosure(this._handleAllClicks, this);
 	}
-	/*
-	document.getElementById("UnknownPersonSlide_EmailAnchorId").onclick =  AjxCallback.simpleClosure(this._openCompose, this);
-	if(document.getElementById("UnknownPersonSlide_NameAnchorId")) {
-		document.getElementById("UnknownPersonSlide_NameAnchorId").onclick =  AjxCallback.simpleClosure(this._openContact, this); 
-	}
-	*/
-	this._removeCustomAttrs(attrs);
-};
-
-// Remove custom attributes we added because we are playing with the contact data directly
-// todo - implement clone on attrs
-
-UnknownPersonSlide.prototype._removeCustomAttrs =
-function(attrs) {
-	delete attrs["rightClickForMoreOptions"];
-	delete attrs["formattedEmail"];
-	delete attrs["address"];
-	delete attrs["presence"];
-
-    /* See bug 77183. imagepart is not a generated attr so do not remove it
-    if(attrs["imagepart"]) {
-        delete attrs["imagepart"];
-    }*/
-	delete attrs["imURI"];
 };
 
 UnknownPersonSlide.prototype._formatTexts =

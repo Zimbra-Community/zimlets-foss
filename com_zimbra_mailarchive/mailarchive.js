@@ -20,43 +20,9 @@
  *@Author Raja Rao DV
  */
 
-
-function customHandler(manager /* DwtKeyboardManager*/, callback) {
-	this.__default = manager.__currDefaultHandler;
-	this.__manager = manager;
-	this.__callback = callback;
-	// this.dbg = function() { return console.log.apply(console, arguments); };
-	this.dbg = function() {};
-	this.dbg('Default handler was ' + this.__default);
-	manager.pushDefaultHandler(this);
-};
-
-customHandler.prototype.handleKeyEvent = function(e) {
-	this.dbg('handleKeyEvent: ' + e);
-	if (e.keyCode == 89) {
-		/* Y pressed */
-		this.__callback();
-		return DwtKeyboardMgr.__KEYSEQ_HANDLED;
-	}
-	if (typeof(this.__default) != 'undefined') {
-		this.dbg('Handling over to default keyboard manager');
-		var result = this.__manager.__dispatchKeyEvent(this.__default, e);
-		this.dbg('Result was ' + result);
-		return result;
-	} else {
-		this.dbg('Default handler is not defined or does not handle keys!');
-	}
-	return DwtKeyboardMgr.__KEYSEQ_NOT_HANDLED;
-};
-
 //Zimlet Class
 ZmArchiveZimlet = function() {
 	this._msgMap = {};
-	this._archiveButton = undefined;
-	var that = this;
-	var keyboardHandler = new customHandler(appCtxt.getKeyboardMgr(), function() {
-		that._archiveButton._handleClick(new DwtMouseEvent());
-	});
 };
 
 //Make Zimlet class a subclass of ZmZimletBase class - this makes a Zimlet a Zimlet
@@ -116,7 +82,7 @@ function() {
 
 ZmArchiveZimlet.prototype._chooseArchiveFolder =
 function(postCallback) {
-	var dialog = appCtxt.getChooseFolderDialog();
+	var dialog = appCtxt.getChooseFolderDialog(ZmApp.MAIL);
 	dialog.registerCallback(DwtDialog.OK_BUTTON, new AjxCallback(this, this._handleChooseFolder, postCallback));
 	var params = {overviewId: dialog.getOverviewId(ZmApp.MAIL), appName:ZmApp.MAIL, skipReadOnly:true, skipRemote:false};
 	dialog.popup(params);
@@ -194,7 +160,6 @@ function(app, toolbar, controller, viewId) {
 		};
 		if (!toolbar.getOp(ZmArchiveZimlet.OP_ARCHIVE)) {
 			var button = toolbar.createOp(ZmArchiveZimlet.OP_ARCHIVE, buttonArgs);
-			this._archiveButton = button;
 			button.addSelectionListener(new AjxListener(controller, controller._archiveViaZimletListener, [this]));
 			button.archiveZimlet = this;
 			// override the function to reset the operations in the toolbar as there is no method to

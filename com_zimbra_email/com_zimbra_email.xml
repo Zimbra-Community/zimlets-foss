@@ -19,7 +19,7 @@
  * ***** END LICENSE BLOCK *****
 -->
 <zimlet name="com_zimbra_email"
-        version="11.11"
+        version="11.12"
         target="main view-window"
         label="${msg.zimletLabel}"
         description="${msg.description}">

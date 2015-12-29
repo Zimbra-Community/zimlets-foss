@@ -79,6 +79,7 @@ function() {
     attachDialog.setUploadCallback(callback);
 
     this.AMV.attachDialog.popup();
+    this.AMV.attachDialog.enableInlineOption(false);
     this._addedToMainWindow = true;
 };
 

@@ -1,0 +1,48 @@
+<!--
+ * ***** BEGIN LICENSE BLOCK *****
+ * Zimbra Collaboration Suite Zimlets
+ * Copyright (C) 2007, 2008, 2009, 2010, 2013, 2014 Zimbra, Inc.
+ * 
+ * The contents of this file are subject to the Common Public Attribution License Version 1.0 (the "License");
+ * you may not use this file except in compliance with the License. 
+ * You may obtain a copy of the License at: http://www.zimbra.com/license
+ * The License is based on the Mozilla Public License Version 1.1 but Sections 14 and 15 
+ * have been added to cover use of software over a computer network and provide for limited attribution 
+ * for the Original Developer. In addition, Exhibit A has been modified to be consistent with Exhibit B. 
+ * 
+ * Software distributed under the License is distributed on an "AS IS" basis, 
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied. 
+ * See the License for the specific language governing rights and limitations under the License. 
+ * The Original Code is Zimbra Open Source Web Client. 
+ * The Initial Developer of the Original Code is Zimbra, Inc. 
+ * All portions of the code are Copyright (C) 2007, 2008, 2009, 2010, 2013, 2014 Zimbra, Inc. All Rights Reserved. 
+ * ***** END LICENSE BLOCK *****
+-->
+<zimlet name="com_zimbra_ymemoticons"
+        version="2.9"
+        label="${msg.label}"
+        description="${msg.description}"
+        target="main compose-window view-window">
+    <!-- note: since we probably can't bundle the Yahoo icons with
+         Zimbra, this Zimlet links to them directly on the Yahoo
+         website.  See http://messenger.yahoo.com/emoticons.php -->
+
+    <include>ymemoticons.js</include>
+    <include>smileys.js</include>
+    <include>ymemoticonspicker.js</include>
+    <includeCSS>yemoticons.css</includeCSS>
+    <handlerObject>Com_Zimbra_YMEmoticons</handlerObject>
+
+    <zimletPanelItem label="Emoticons" icon="yemoticons-panelIcon">
+        <toolTipText>${msg.yahooEmoticons}</toolTipText>
+        <contextMenu>
+            <menuItem label="${msg.temporarilyDisableInMail}" id="YE_TEMP_DISABLE"/>
+            <menuItem label="${msg.preferences}" id="YE_PREFERENCES"/>
+        </contextMenu>
+    </zimletPanelItem>
+
+    <userProperties>
+        <property type="string" name="yemoticons_enableInMail" value="true"/>
+    </userProperties>
+
+</zimlet>

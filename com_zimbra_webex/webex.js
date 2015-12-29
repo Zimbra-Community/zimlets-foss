@@ -1304,7 +1304,7 @@ function() {
 	}
 	this.accPrefsDlg = new ZmDialog({parent: this.getShell(), title: this.getMessage("WebExZimlet_manageAccounts"),
 		view: this._accPrefsDlgView, standardButtons: [DwtDialog.OK_BUTTON, DwtDialog.CANCEL_BUTTON],
-		extraButtons: [new DwtDialog_ButtonDescriptor("webex_zimlet_add_tab_button", "Add Account", DwtDialog.ALIGN_LEFT, new AjxCallback(this, this._addAccountTab))]});
+		extraButtons: [new DwtDialog_ButtonDescriptor("webex_zimlet_add_tab_button", this.getMessage("WebExZimlet_addAccount"), DwtDialog.ALIGN_LEFT, new AjxCallback(this, this._addAccountTab))]});
 	this.accPrefsDlg.setButtonListener(DwtDialog.OK_BUTTON, new AjxListener(this, this._accPrefsOkBtnListner));
 	this._addTestAccountButtons();
 	this._addHelpLinkListeners();
