@@ -97,8 +97,6 @@ UndoSendZimlet.prototype.onSendButtonClicked = function(controller) {
 
 	controller.saveDraft(ZmComposeController.DRAFT_TYPE_AUTO);
 
-	this._msg = controller._composeView.getMsg();
-
     if (!this._mainContainerId) {
         this._createView();
     }
@@ -180,10 +178,6 @@ UndoSendZimlet.prototype._showView = function(visible) {
 
 /**
  * Updates countdown's counter or sends email if counter is 0.
- *
- * @param {ZmComposeController}     controller      compose controller
- * @param {string}                  viewId          compose view ID
- * @param {string}                  timerSpanId     ID of the SPAN displaying the counter
  */
 UndoSendZimlet.prototype._updateCounter = function() {
 
@@ -205,9 +199,6 @@ UndoSendZimlet.prototype._updateCounter = function() {
 
 /**
  * Aborts the send and returns the user to the compose view.
- *
- * @param {ZmComposeController}     controller      compose controller
- * @param {string}                  viewId          compose view ID
  */
 UndoSendZimlet.prototype._undoSend = function() {
 
@@ -224,9 +215,6 @@ UndoSendZimlet.prototype._undoSend = function() {
 
 /**
  * Sends the email when user clicks "Send Now" link.
- *
- * @param {ZmComposeController}     controller      compose controller
- * @param {string}                  viewId          compose view ID
  */
 UndoSendZimlet.prototype._sendNow = function() {
 
@@ -237,9 +225,6 @@ UndoSendZimlet.prototype._sendNow = function() {
 
 /**
  * Sends the message.
- *
- * @param {ZmComposeController}     controller      compose controller
- * @param {string}                  viewId          compose view ID
  */
 UndoSendZimlet.prototype._sendEmail = function() {
 
@@ -256,7 +241,7 @@ UndoSendZimlet.prototype._sendEmail = function() {
  */
 UndoSendZimlet.prototype.onSendMsgFailure = function(controller, ex, msg) {
 
-	if (this._msg === msg) {
+	if (this._composeViewId === controller.getCurrentViewId()) {
 		this._undoSend();
 	}
 };
