@@ -19,7 +19,7 @@
  * ***** END LICENSE BLOCK *****
 -->
 <zimlet name="com_zimbra_ymemoticons"
-        version="2.9"
+        version="2.10"
         label="${msg.label}"
         description="${msg.description}"
         target="main compose-window view-window">
@@ -33,7 +33,7 @@
     <includeCSS>yemoticons.css</includeCSS>
     <handlerObject>Com_Zimbra_YMEmoticons</handlerObject>
 
-    <zimletPanelItem label="Emoticons" icon="yemoticons-panelIcon">
+    <zimletPanelItem label="${msg.yahooEmoticons}" icon="yemoticons-panelIcon">
         <toolTipText>${msg.yahooEmoticons}</toolTipText>
         <contextMenu>
             <menuItem label="${msg.temporarilyDisableInMail}" id="YE_TEMP_DISABLE"/>

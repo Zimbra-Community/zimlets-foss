@@ -158,7 +158,7 @@ Com_Zimbra_YMEmoticons.prototype.temporarilyDisable =
 function() {
 	this._isEnabled = false;
 	var transitions = [ZmToast.FADE_IN, ZmToast.PAUSE, ZmToast.FADE_OUT];
-	appCtxt.getAppController().setStatusMsg("Emoticons Temporarily Disabled", ZmStatusView.LEVEL_INFO, null, transitions);
+	appCtxt.getAppController().setStatusMsg(this.getMessage("yahoo_emoticons_toaster_temporarily_disabled"), ZmStatusView.LEVEL_INFO, null, transitions);
 };
 
 Com_Zimbra_YMEmoticons.prototype._showPreferenceDlg =
@@ -199,8 +199,8 @@ function() {
 	if (domVal != this.enableInMail) {
 		this.setUserProperty("yemoticons_enableInMail", domVal, true);
 		this.enableInMail = domVal;
-		var ed = domVal ? "Enabled" : "Disabled";
+		var ed = domVal ? this.getMessage("yahoo_emoticons_toaster_enabled") : this.getMessage("yahoo_emoticons_toaster_disabled");
 		var transitions = [ZmToast.FADE_IN, ZmToast.PAUSE, ZmToast.FADE_OUT];
-		appCtxt.getAppController().setStatusMsg(["Emoticons ",ed, " In Mail"].join(""), ZmStatusView.LEVEL_INFO, null, transitions);
+		appCtxt.getAppController().setStatusMsg(ed, ZmStatusView.LEVEL_INFO, null, transitions);
 	} 
 };
