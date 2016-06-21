@@ -1,0 +1,76 @@
+<project name="ZimbraExtensionExamples" default="package">
+	<property name="src.dir" location="src" />
+	<property name="src.java.dir" location="${src.dir}/java" />
+	<property name="build.dir" location="build" />
+    <property name="build.classes.dir" location="${build.dir}/classes" />
+    <property name="build.jars.dir" location="${build.dir}/jars" />
+    <property name="build.docs.dir" location="${build.dir}/docs" />
+    <property name="conf.dir" location="conf"/>
+	<path id="src.java.path">
+		<pathelement location="${src.java.dir}" />
+	</path>
+
+	<target name="build-init">
+		<mkdir dir="${build.classes.dir}" />
+		<mkdir dir="${build.jars.dir}" />
+	</target>
+
+	<property name="zimbraServer.dir" value="../../"/>
+	<property name="zimbraCommon.dir" value="../../../ZimbraCommon"/>
+    <property name="zimbraSoap.dir" value="../../../ZimbraSoap"/>
+
+	<path id="class.path">
+		<pathelement location="${build.classes.dir}" />
+		<pathelement location="${zimbraServer.dir}/build/classes"/>
+		<pathelement location="${zimbraCommon.dir}/build/classes"/>
+        <pathelement location="${zimbraSoap.dir}/build/classes"/>
+		<fileset dir="${zimbraCommon.dir}/jars">
+			<include name="**/*.jar"/>
+		</fileset>
+	</path>
+
+	<target name="compile" depends="build-init" description="Compiles the source code">
+		<javac destdir="${build.classes.dir}" debug="true" classpathref="class.path">
+			<src refid="src.java.path" />
+		</javac>
+	</target>
+
+	<target name="package" depends="compile" description="Creates jar files">
+		<jar manifest="${conf.dir}/httphandler/MANIFEST.MF"
+             destfile="${build.jars.dir}/zimbra-extns-httphandler.jar"
+             basedir="${build.classes.dir}" 
+             includes="**/httphandler/**"/>
+		<jar manifest="${conf.dir}/soapservice/MANIFEST.MF"
+             destfile="${build.jars.dir}/zimbra-extns-soapservice.jar"
+             basedir="${build.classes.dir}"
+             includes="**/soapservice/**"/>
+		<jar manifest="${conf.dir}/customauth/MANIFEST.MF"
+             destfile="${build.jars.dir}/zimbra-extns-customauth.jar"
+             basedir="${build.classes.dir}"
+             includes="**/customauth/**"/>
+		<jar manifest="${conf.dir}/samlprovider/MANIFEST.MF"
+             destfile="${build.jars.dir}/zimbra-extns-samlprovider.jar"
+             basedir="${build.classes.dir}"
+             includes="**/samlprovider/**"/>
+        <jar manifest="${conf.dir}/storemanager/MANIFEST.MF"
+             destfile="${build.jars.dir}/zimbra-extns-storemanager.jar"
+             basedir="${build.classes.dir}"
+             includes="**/storemanager/**"/>
+        <jar manifest="${conf.dir}/sieveaction/MANIFEST.MF"
+             destfile="${build.jars.dir}/zimbra-extns-sieveaction.jar"
+             basedir="${build.classes.dir}"
+             includes="**/sieveaction/**"/>
+	</target>
+
+    <target name="javadoc">
+        <javadoc sourcepath="${src.java.dir}"
+                 packagenames="*"       
+                 destdir="${build.docs.dir}/api"
+                 classpathref="class.path">
+        </javadoc>
+    </target>
+
+	<target name="clean" description="Removes build dir">
+		<delete dir="${build.dir}" />
+	</target>
+</project>
