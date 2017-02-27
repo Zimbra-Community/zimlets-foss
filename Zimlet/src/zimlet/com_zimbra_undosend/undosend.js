@@ -73,57 +73,83 @@ UndoSendZimlet.prototype._keyDownListener = function(ev) {
         composeCtlr = appCtxt.getCurrentController();
 
     if (pref !== false && ev.ctrlKey && keyCode === 13 && curView === ZmId.VIEW_COMPOSE && composeCtlr && !composeCtlr._uploadingProgress) {
-        this.onSendButtonClicked(appCtxt.getCurrentView().getController());
+        this._sendButtonListener(appCtxt.getCurrentView().getController());
         return false;
     }
 };
 
+UndoSendZimlet.prototype.initializeToolbar = function(app, toolbar, controller, viewId) {
+  if (viewId.indexOf("COMPOSE") >= 0) {
+    var sendBtn = toolbar.getButton("SEND_MENU");
+    if(!sendBtn) {
+      sendBtn = toolbar.getButton("SEND");
+    }
+    if(!sendBtn) {
+      return;
+    }
+    sendBtn.removeSelectionListeners(); //remove all selection listeners
+    sendBtn.addSelectionListener(new AjxListener(this, this._sendButtonListener, controller));
+  }
+};
+
 /**
- * Listens for user send of a message (via Send button press or shortcut).
+ * Listens for user send.
  *
  * @param {ZmComposeController}     controller      compose controller
  */
-UndoSendZimlet.prototype.onSendButtonClicked = function(controller) {
+UndoSendZimlet.prototype._sendButtonListener = function(controller) {
 
-    // See if another message is being handled; if so, bail.
-    if (Dwt.getVisible(document.getElementById(this._mainContainerId))) {
-        this.displayErrorMessage(this.getMessage("UndoSendZimlet_pleaseWait"));
-        return true;
-    }
+  this._counter = this._initialDelay;
 
-    this._controller = controller;
-    var avm = appCtxt.getAppViewMgr();
-    var viewId = this._composeViewId = avm.getCurrentViewId();
-
-	controller.saveDraft(ZmComposeController.DRAFT_TYPE_AUTO);
-
-    if (!this._mainContainerId) {
-        this._createView();
-    }
-
-	if (!appCtxt.isChildWindow) {
-        var avmHash = avm._isTabView ? avm._tabParams[viewId] : avm._view[viewId].tabParams,
-            tabBtnId = avmHash && avmHash.id,
-            tabButton = tabBtnId && appCtxt.getAppChooser().getButton(tabBtnId);
-	}
-
-    this._composeTabTitle = tabButton ? tabButton.getText() : ZmMsg.compose;
-    this._counter = this._initialDelay;
-    this._linkClicked = false;
-
-	// clear auto-save timer to ensure there are no leftover drafts
-	if (controller._autoSaveTimer) {
-		controller._autoSaveTimer.kill();
-	}
-
-	if (!appCtxt.isChildWindow) {
-		avm.popView(true, viewId);
-		controller.inactive = false; // IMPORTANT! make sure to set this so this view isnt reused
-	}
-
-    this._showView(true);
-
+  // See if another message is being handled; if so, bail.
+  if (Dwt.getVisible(document.getElementById(this._mainContainerId))) {
+    this.displayErrorMessage(this.getMessage("UndoSendZimlet_pleaseWait"));
     return true;
+  }
+
+  this._msg = controller._composeView.getMsg();
+  if (!this._msg) { //there is some compose error..
+    return;
+  }
+
+  this._controller = controller;
+
+  if (this._counter === 0) {
+    this._sendEmail();
+    return;
+  }
+
+  var avm = appCtxt.getAppViewMgr();
+  var viewId = this._composeViewId = avm.getCurrentViewId();
+
+  controller.saveDraft(ZmComposeController.DRAFT_TYPE_AUTO);
+
+  if (!this._mainContainerId) {
+    this._createView();
+  }
+
+  if (!appCtxt.isChildWindow) {
+    var avmHash = avm._isTabView ? avm._tabParams[viewId] : avm._view[viewId].tabParams,
+      tabBtnId = avmHash && avmHash.id,
+      tabButton = tabBtnId && appCtxt.getAppChooser().getButton(tabBtnId);
+  }
+
+  this._composeTabTitle = tabButton ? tabButton.getText() : ZmMsg.compose;
+  this._linkClicked = false;
+
+  // clear auto-save timer to ensure there are no leftover drafts
+  if (controller._autoSaveTimer) {
+    controller._autoSaveTimer.kill();
+  }
+
+  if (!appCtxt.isChildWindow) {
+    avm.popView(true, viewId);
+    controller.inactive = false; // IMPORTANT! make sure to set this so this view isnt reused
+  }
+
+  this._showView(true);
+
+  return true;
 };
 
 UndoSendZimlet.prototype._createView = function() {
