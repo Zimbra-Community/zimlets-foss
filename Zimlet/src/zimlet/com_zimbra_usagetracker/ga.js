@@ -1,21 +1,23 @@
 /*
  * ***** BEGIN LICENSE BLOCK *****
  * Zimbra Collaboration Suite Zimlets
- * Copyright (C) 2009, 2014 Zimbra, Inc.
- * 
+ * Copyright (C) 2009, 2014, 2016 Synacor, Inc.
+ *
  * The contents of this file are subject to the Common Public Attribution License Version 1.0 (the "License");
- * you may not use this file except in compliance with the License. 
- * You may obtain a copy of the License at: http://www.zimbra.com/license
- * The License is based on the Mozilla Public License Version 1.1 but Sections 14 and 15 
- * have been added to cover use of software over a computer network and provide for limited attribution 
- * for the Original Developer. In addition, Exhibit A has been modified to be consistent with Exhibit B. 
- * 
- * Software distributed under the License is distributed on an "AS IS" basis, 
- * WITHOUT WARRANTY OF ANY KIND, either express or implied. 
- * See the License for the specific language governing rights and limitations under the License. 
- * The Original Code is Zimbra Open Source Web Client. 
- * The Initial Developer of the Original Code is Zimbra, Inc. 
- * All portions of the code are Copyright (C) 2009, 2014 Zimbra, Inc. All Rights Reserved. 
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at: https://www.zimbra.com/license
+ * The License is based on the Mozilla Public License Version 1.1 but Sections 14 and 15
+ * have been added to cover use of software over a computer network and provide for limited attribution
+ * for the Original Developer. In addition, Exhibit A has been modified to be consistent with Exhibit B.
+ *
+ * Software distributed under the License is distributed on an "AS IS" basis,
+ * WITHOUT WARRANTY OF ANY KIND, either express or implied.
+ * See the License for the specific language governing rights and limitations under the License.
+ * The Original Code is Zimbra Open Source Web Client.
+ * The Initial Developer of the Original Code is Zimbra, Inc.  All rights to the Original Code were
+ * transferred by Zimbra, Inc. to Synacor, Inc. on September 14, 2015.
+ *
+ * All portions of the code are Copyright (C) 2009, 2014, 2016 Synacor, Inc. All Rights Reserved.
  * ***** END LICENSE BLOCK *****
  */
 var _gat=new Object({c:"length",lb:"4.3",m:"cookie",b:undefined,cb:function(d,a){this.zb=d;this.Nb=a},r:"__utma=",W:"__utmb=",ma:"__utmc=",Ta:"__utmk=",na:"__utmv=",oa:"__utmx=",Sa:"GASO=",X:"__utmz=",lc:"http://www.google-analytics.com/__utm.gif",mc:"https://ssl.google-analytics.com/__utm.gif",Wa:"utmcid=",Ya:"utmcsr=",$a:"utmgclid=",Ua:"utmccn=",Xa:"utmcmd=",Za:"utmctr=",Va:"utmcct=",Hb:false,_gasoDomain:undefined,_gasoCPath:undefined,e:window,a:document,k:navigator,t:function(d){var a=1,c=0,h,
