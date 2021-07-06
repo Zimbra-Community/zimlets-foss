@@ -97,7 +97,7 @@ function() {
  */
 WikipediaZimlet.prototype._displaySearchResult = 
 function(search) {
-    var url = "http://www.wikipedia.org/search-redirect.php?language="+this._getLanguageCode()+"&go=Go&search=" + AjxStringUtil.urlEncode(search);
+    var url = "https://www.wikipedia.org/search-redirect.php?language="+this._getLanguageCode()+"&go=Go&search=" + AjxStringUtil.urlEncode(search);
 	this.openCenteredWindow(url);
 };
 
